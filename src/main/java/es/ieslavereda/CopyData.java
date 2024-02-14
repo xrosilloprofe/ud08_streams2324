@@ -1,9 +1,8 @@
 package es.ieslavereda;
 
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+
+import static java.io.DataInputStream.readUTF;
 
 public class CopyData {
     static double[] precios = {0.99, 2.59, 1.99};
@@ -14,6 +13,7 @@ public class CopyData {
         //guardarme los datos en un fichero
         try {
             save();
+            load();
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -30,8 +30,20 @@ public class CopyData {
         }
     }
 
-    public static void load(){
+    public static void load() throws IOException{
+        try(DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream("fruteria.dat")))){
+            double precio;
+            String producto;
+            int stock;
 
+            while(true){
+                producto = dis.readUTF();
+                precio = dis.readDouble();
+                stock = dis.readInt();
+                System.out.println("Producto: " + producto + " precio: " + precio + " stock: " + stock);
+            }
+        } catch (EOFException e){
+        }
     }
 
 }
