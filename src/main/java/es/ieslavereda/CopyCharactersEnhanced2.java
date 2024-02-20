@@ -2,15 +2,14 @@ package es.ieslavereda;
 
 import java.io.*;
 
-public class CopyCharactersEnhaced {
+public class CopyCharactersEnhanced2 {
     public static void main(String[] args) {
         try(BufferedReader br = new BufferedReader(new FileReader("xanadu.txt"));
-            BufferedWriter bw = new BufferedWriter(new FileWriter("copiaTexto2.txt")) ){
+            PrintWriter pw = new PrintWriter(new FileWriter("copiaTexto3.txt")) ){
 
             String copia;
             while((copia=br.readLine())!=null){
-                bw.write(copia);
-                bw.newLine();
+                pw.println(copia);
             }
 
         } catch (IOException e){
