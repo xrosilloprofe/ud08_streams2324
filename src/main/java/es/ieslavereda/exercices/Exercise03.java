@@ -1,6 +1,5 @@
 package es.ieslavereda.exercices;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,7 +14,7 @@ import java.util.List;
  */
 
 public class Exercise03 {
-    public static final String fichero="Documentos/alumnos_notas.txt";
+    public static final String FICHERO ="Documentos/alumnos_notas.txt";
     public static void main(String[] args) {
         try {
             List<String> studentData = readFile();
@@ -59,7 +58,7 @@ public class Exercise03 {
 
     public static List<String> readFile() throws IOException {
         List<String> studentData=new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(fichero))){
+        try(BufferedReader br = new BufferedReader(new FileReader(FICHERO))){
             String linea;
             while((linea=br.readLine())!=null)
                 studentData.add(linea);
